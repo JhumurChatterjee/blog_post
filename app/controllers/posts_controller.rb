@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
 
   def index
-    @pagy, @posts = pagy_countless(current_user.posts.order_by_date, link_extra: 'data-remote="true"')
+    @pagy, @posts = pagy_countless(current_user.posts.includes(:tags).order_by_date, link_extra: 'data-remote="true"')
   end
 
   def new
@@ -52,6 +52,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :archive)
+    params.require(:post).permit(:title, :body, :archive, :tag_list)
   end
 end

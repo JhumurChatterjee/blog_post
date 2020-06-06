@@ -11,6 +11,12 @@
     <%= f.text_area :body, class: "form-control", required: true, placeholder: "Write your post here...", rows: 10 %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :tag_list, "Tag Lists" %>
+    <%= f.text_field :tag_list, value: @post.tag_list.split(" ").join(", "), class: "form-control", required: true, placeholder: "Tags" %>
+    <small id="tagListHelp" class="form-text text-muted">Tags are "," separated string.</small>
+  </div>
+
   <div class="form-group custom-control custom-checkbox">
     <%= f.check_box :archive, class: "custom-control-input" %>
     <%= f.label :archive, class: "custom-control-label" %>

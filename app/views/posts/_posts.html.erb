@@ -7,11 +7,13 @@
 
       <h5 class="card-title"><%= truncate(post.title, length: 50) %></h5>
       <p class="card-text"><%= truncate(post.body, length: 400) %></p>
+      <%= render "shared/tag_list", tags: post.tags %>
 
       <section class="row">
         <div class="col-sm-12 col-md-6">
           <span class="text-muted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
         </div>
+
         <div class="col-sm-12 col-md-6 text-md-right">
           <%= link_to "View", post_path(post), class: "text-primary" %> |
           <%= link_to "Edit", edit_post_path(post), class: "text-info" %> |

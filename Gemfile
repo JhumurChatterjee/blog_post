@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
+gem "acts-as-taggable-on", "~> 6.5"
 gem "bootsnap", "~> 1.4", ">= 1.4.6"
 gem "devise", "~> 4.7", ">= 4.7.1"
 gem "jbuilder", "~> 2.10"

@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  acts_as_taggable_on :tags
+
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 255 }

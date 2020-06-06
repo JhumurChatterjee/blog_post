@@ -5,4 +5,5 @@
 <% end %>
 
 <h2 class="mb-3"><%= @post.title %></h2>
+<%= render "shared/tag_list", tags: @post.tags %>
 <p><%= @post.body %></p>

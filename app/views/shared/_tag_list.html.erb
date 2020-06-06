@@ -1,0 +1,7 @@
+<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
+
+<div class="mb-3">
+  <% tags.each_with_index do |tag, index| %>
+    <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+  <% end %>
+</div>
