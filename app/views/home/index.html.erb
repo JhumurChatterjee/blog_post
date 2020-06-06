@@ -5,4 +5,10 @@
   <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
 </section>
 
-<%= render "posts" %>
+<div id="user_posts">
+  <%= render "posts" %>
+</div>
+
+<div id="auto_next_link">
+  <%= render "shared/auto_incremental_pagy" %>
+</div>

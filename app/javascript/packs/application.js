@@ -12,6 +12,10 @@ $( document ).on('turbolinks:load', function() {
   $('.flash-alert').delay(5000).slideUp(500, function() {
     $(this).alert('close');
   });
+
+  window.addEventListener('resize', loadNextPage);
+  window.addEventListener('scroll', loadNextPage);
+  window.addEventListener('load', loadNextPage);
 });
 
 $(document).on('change', '.signup-email', function(e) {
@@ -40,3 +44,16 @@ function validateEmail(email) {
   const re = /([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/;
   return re.test(String(email).toLowerCase());
 }
+
+var loadNextPage = function () {
+  if ($('#user_posts').height() === undefined || $('#next_link').data('loading')) { return }
+  var wBottom = $(window).scrollTop() + $(window).height();
+  var elBottom = $('#user_posts').offset().top + $('#user_posts').height();
+
+  if (wBottom > elBottom) {
+    if ($('#next_link')[0] !== undefined) {
+      $('#next_link')[0].click();
+      $('#next_link').data('loading', true);
+    }
+  }
+};

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = current_user.posts
+    @pagy, @posts = pagy_countless(current_user.posts.order_by_date, link_extra: 'data-remote="true"')
   end
 
   def new

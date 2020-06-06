@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :archive, inclusion: { in: [true, false] }
 
-  scope :archived,     -> { where(archive: true) }
-  scope :non_archived, -> { where(archive: false) }
+  scope :order_by_date, -> { order(created_at: :desc) }
+  scope :archived,      -> { where(archive: true) }
+  scope :non_archived,  -> { where(archive: false) }
 end
