@@ -2,4 +2,10 @@
 
 <h2 class="mb-4">Post History</h2>
 
-<%= render "posts" %>
+<div id="user_posts">
+  <%= render "posts" %>
+</div>
+
+<div id="auto_next_link">
+  <%= render "shared/auto_incremental_pagy" %>
+</div>

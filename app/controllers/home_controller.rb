@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.non_archived
+    @pagy, @posts = pagy_countless(Post.non_archived.order_by_date, link_extra: 'data-remote="true"')
   end
 end
