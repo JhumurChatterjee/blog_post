@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
 
   def index
     @pagy, @posts = pagy_countless(current_user.posts.order_by_date, link_extra: 'data-remote="true"')
@@ -10,7 +10,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    post
+    @post = Post.find(params[:id])
+
+    redirect_to root_path, flash: { danger: "You tried to access unauthorized post." } if @post.archive? && @post.user_id != current_user&.id
   end
 
   def create
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
     @post ||= Post.find(params[:id])
     return @post if @post.user_id == current_user.id
 
-    redirect_to root_path, flash: { danger: "You tried to access unauthorized note." }
+    redirect_to root_path, flash: { danger: "You tried to access unauthorized post." }
   end
 
   def post_params

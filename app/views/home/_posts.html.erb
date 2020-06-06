@@ -5,7 +5,7 @@
         <span class="badge badge-danger mb-2">Archived</span>
       <% end %>
 
-      <h5 class="card-title"><%= truncate(post.title, length: 50) %></h5>
+      <h5 class="card-title"><%= link_to truncate(post.title, length: 50), post_path(post) %></h5>
       <p class="card-text"><%= truncate(post.body, length: 400) %></p>
       <span class="text-muted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
     </div>
