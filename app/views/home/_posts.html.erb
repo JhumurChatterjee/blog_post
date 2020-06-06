@@ -1,3 +1,5 @@
+<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
+
 <% @posts.each do |post| %>
   <div class="card mb-3">
     <div class="card-body">
@@ -7,7 +9,13 @@
 
       <h5 class="card-title"><%= link_to truncate(post.title, length: 50), post_path(post) %></h5>
       <p class="card-text"><%= truncate(post.body, length: 400) %></p>
-      <%= render "shared/tag_list", tags: post.tags %>
+
+      <div class="mb-3">
+        <% post.tags.each_with_index do |tag, index| %>
+          <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+        <% end %>
+      </div>
+
       <span class="text-muted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
     </div>
   </div>

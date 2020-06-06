@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
 
   def index
-    @pagy, @posts = pagy_countless(current_user.posts.includes(:tags).order_by_date, link_extra: 'data-remote="true"')
+    if params[:tag].present?
+      posts = current_user.posts.tagged_with(params[:tag])
+    else
+      posts = current_user.posts.non_archived
+    end
+
+    @pagy, @posts = pagy_countless(posts.includes(:tags).order_by_date, link_extra: 'data-remote="true"')
   end
 
   def new

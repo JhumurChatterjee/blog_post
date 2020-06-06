@@ -1,4 +1,5 @@
 <% provide(:title, "Home") %>
+<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
 
 <section class="mb-4 d-flex justify-content-between">
   <h3>Post Album</h3>
@@ -8,8 +9,24 @@
   </span>
 </section>
 
-<div id="user_posts">
-  <%= render "posts" %>
+<div class="row">
+  <div id="user_posts" class="col-sm-12 col-md-9">
+    <%= render "posts" %>
+  </div>
+
+  <div class="col-sm-12 col-md-3">
+    <h4>Most popular tags:</h4>
+
+    <div class="card">
+      <div class="card-body">
+        <% ActsAsTaggableOn::Tag.most_used(20).each_with_index do |tag, index| %>
+          <%= link_to root_path(tag: tag.name) do %>
+            <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="auto_next_link">

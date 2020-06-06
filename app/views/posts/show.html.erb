@@ -1,9 +1,28 @@
 <% provide(:title, @post.title) %>
+<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
 
-<% if @post.archive? %>
-  <span class="badge badge-danger mb-2">Archived</span>
-<% end %>
+<div class="row">
+  <div class="col-sm-12 col-md-9">
+    <% if @post.archive? %>
+      <span class="badge badge-danger mb-2">Archived</span>
+    <% end %>
 
-<h2 class="mb-3"><%= @post.title %></h2>
-<%= render "shared/tag_list", tags: @post.tags %>
-<p><%= @post.body %></p>
+    <h2 class="mb-3"><%= @post.title %></h2>
+
+    <div class="mb-3">
+      <% @post.tags.each_with_index do |tag, index| %>
+        <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+      <% end %>
+    </div>
+
+    <p><%= @post.body %></p>
+  </div>
+
+  <div class="col-sm-12 col-md-3">
+    <h4>You may like:</h4>
+
+    <% @post.find_related_tags.each do |post| %>
+      <%= link_to truncate(post.title, length: 30), post_path(post) %>
+    <% end %>
+  </div>
+</div>
