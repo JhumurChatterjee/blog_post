@@ -36,3 +36,9 @@ body {
     background-color: #A0A0A0;
   }
 }
+
+.field_with_errors {
+  input {
+    border-color: #FF0000;
+  }
+}
