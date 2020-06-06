@@ -1,3 +1,8 @@
 <% provide(:title, "Home") %>
 
-<h1>Welcome to Blog Post..!!</h1>
+<section class="mb-4 d-flex justify-content-between">
+  <h3>Post Album</h3>
+  <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+</section>
+
+<%= render "posts" %>

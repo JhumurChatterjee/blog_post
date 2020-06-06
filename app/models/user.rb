@@ -8,6 +8,8 @@ class User < ApplicationRecord
     self.last_name = last_name.to_s.squish.titleize
   end
 
+  has_many :posts, dependent: :destroy
+
   validates :first_name, :last_name, presence: true, length: { maximum: 255 }
 
   def full_name

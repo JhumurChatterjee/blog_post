@@ -1,0 +1,23 @@
+<%= form_for @post do |f| %>
+  <%= render "shared/error", resource: @post %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", autofocus: true, required: true, placeholder: "Post Title", maxlength: 255 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "Body" %>
+    <%= f.text_area :body, class: "form-control", required: true, placeholder: "Write your post here...", rows: 10 %>
+  </div>
+
+  <div class="form-group custom-control custom-checkbox">
+    <%= f.check_box :archive, class: "custom-control-input" %>
+    <%= f.label :archive, class: "custom-control-label" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:button_text), class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+    <%= link_to "Back", @post.new_record? ? root_path : posts_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
