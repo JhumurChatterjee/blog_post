@@ -42,3 +42,16 @@ body {
     border-color: #FF0000;
   }
 }
+
+.likes-count {
+  font-weight: 600;
+}
+
+.like-icon {
+  color: #007BFF;
+  font-size: 20px;
+
+  &:hover {
+    color: #004590;
+  }
+}

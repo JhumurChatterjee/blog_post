@@ -1,0 +1,7 @@
+$('#like_count_<%= @post.id %>').html("<%= @post.get_upvotes.size %>");
+
+<% if @voted_for %>
+  $('#like_count_<%= @post.id %>').closest('div').find('.like-btn').html('<i class="far fa-thumbs-up like-icon" title="Like"></i>');
+<% else %>
+  $('#like_count_<%= @post.id %>').closest('div').find('.like-btn').html('<i class="fas fa-thumbs-up like-icon" title="Dislike"></i>');
+<% end %>

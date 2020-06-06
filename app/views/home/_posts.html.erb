@@ -1,5 +1,3 @@
-<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
-
 <% @posts.each do |post| %>
   <div class="card mb-3">
     <div class="card-body">
@@ -12,11 +10,29 @@
 
       <div class="mb-3">
         <% post.tags.each_with_index do |tag, index| %>
-          <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+          <span class="badge badge-<%= @classes[index % 7] %>"><%= tag.name %></span>
         <% end %>
       </div>
 
-      <span class="text-muted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <% if user_signed_in? %>
+            <%=
+                link_to current_user.voted_for?(post) ? '<i class="fas fa-thumbs-up like-icon" title="Dislike"></i>'.html_safe : '<i class="far fa-thumbs-up like-icon" title="Like"></i>'.html_safe,
+                        like_post_path(post),
+                        method: :put,
+                        remote: true,
+                        class: "like-btn"
+            %>
+          <% end %>
+
+          <span class="likes-count"><span id="like_count_<%= post.id %>"><%= post.get_upvotes.size %></span> Likes</span>
+        </div>
+
+        <div class="col-sm-12 col-md-6 text-md-right">
+          <span class="text-muted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,5 +1,6 @@
 <% provide(:title, "Home") %>
-<% classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
+<% @classes = ["primary", "secondary", "success", "danger", "warning", "info", "dark"] %>
+<% @liked_posts = current_user&.votes %>
 
 <section class="mb-4 d-flex justify-content-between">
   <h3>Post Album</h3>
@@ -21,7 +22,7 @@
       <div class="card-body">
         <% ActsAsTaggableOn::Tag.most_used(20).each_with_index do |tag, index| %>
           <%= link_to root_path(tag: tag.name) do %>
-            <span class="badge badge-<%= classes[index % 7] %>"><%= tag.name %></span>
+            <span class="badge badge-<%= @classes[index % 7] %>"><%= tag.name %></span>
           <% end %>
         <% end %>
       </div>

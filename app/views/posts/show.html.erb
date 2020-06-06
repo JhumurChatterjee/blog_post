@@ -16,12 +16,32 @@
     </div>
 
     <p><%= @post.body %></p>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <% if user_signed_in? %>
+          <%=
+              link_to current_user.voted_for?(@post) ? '<i class="fas fa-thumbs-up like-icon"></i>'.html_safe : '<i class="far fa-thumbs-up like-icon"></i>'.html_safe,
+                      like_post_path(@post),
+                      method: :put,
+                      remote: true,
+                      class: "like-btn"
+          %>
+        <% end %>
+
+        <span><span id="like_count_<%= @post.id %>"><%= @post.get_upvotes.size %></span> Likes</span>
+      </div>
+
+      <div class="col-sm-12 col-md-6 text-md-right">
+        <span class="text-muted">Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-12 col-md-3">
     <h4>You may like:</h4>
 
-    <% @post.find_related_tags.each do |post| %>
+    <% @post.find_related_tags.first(10).each do |post| %>
       <%= link_to truncate(post.title, length: 30), post_path(post) %>
     <% end %>
   </div>

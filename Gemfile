@@ -4,8 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "acts-as-taggable-on", "~> 6.5"
+gem "acts_as_votable", "~> 0.12.1"
 gem "bootsnap", "~> 1.4", ">= 1.4.6"
 gem "devise", "~> 4.7", ">= 4.7.1"
+gem "font-awesome-sass", "~> 5.12"
 gem "jbuilder", "~> 2.10"
 gem "pagy", "~> 3.8", ">= 3.8.1"
 gem "pg", "~> 1.2", ">= 1.2.3"

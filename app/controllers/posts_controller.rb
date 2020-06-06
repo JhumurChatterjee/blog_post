@@ -48,6 +48,18 @@ class PostsController < ApplicationController
     redirect_to post, flash: { success: "Your Post has been successfully deleted." }
   end
 
+  def like
+    @voted_for = current_user.voted_for?(post)
+
+    if @voted_for
+      post.unliked_by(current_user)
+    else
+      post.liked_by(current_user)
+    end
+
+    render layout: false
+  end
+
   private
 
   def post

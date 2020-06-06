@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    put :like, on: :member
+  end
+
   devise_for :users, controllers: { registrations: "registrations" }
 
   devise_scope :user do
