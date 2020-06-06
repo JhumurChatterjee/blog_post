@@ -7,3 +7,9 @@ require('@rails/ujs').start()
 require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
+
+$( document ).on('turbolinks:load', function() {
+  $('.flash-alert').delay(5000).slideUp(500, function() {
+    $(this).alert('close');
+  });
+});

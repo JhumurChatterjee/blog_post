@@ -31,3 +31,9 @@
 
 en:
   page_title: "Blog Post"
+  success_alert_prefix: "Well done!"
+  info_alert_prefix: "Heads up!"
+  warning_alert_prefix: "Warning!"
+  danger_alert_prefix: "Oh snap!"
+  notice_message_type: "info"
+  alert_message_type: "danger"
