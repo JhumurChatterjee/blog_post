@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "check_email_duplicacy", to: "registrations#check_email_duplicacy"
   end
 
+  resources :comments, only: [:create, :destroy]
+
   root "home#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

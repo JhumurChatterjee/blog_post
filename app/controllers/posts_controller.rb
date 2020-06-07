@@ -17,6 +17,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comment_threads.includes(:user).order(created_at: :desc)
+    @new_comment = Comment.build_from(@post, current_user.id, "") if user_signed_in?
 
     redirect_to root_path, flash: { danger: "You tried to access unauthorized post." } if @post.archive? && @post.user_id != current_user&.id
   end

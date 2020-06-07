@@ -36,6 +36,16 @@
         <span class="text-muted">Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
       </div>
     </div>
+
+    <% if user_signed_in? %>
+      <%= render "comments/form", comment: @new_comment %>
+    <% end %>
+
+    <div class="comments-block">
+      <h4 class="mb-4">Comments:</h4>
+      <div id="new_comment_block"></div>
+      <%= render "comments/comments", comments: @comments %>
+    </div>
   </div>
 
   <div class="col-sm-12 col-md-3">

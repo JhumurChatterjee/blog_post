@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "acts-as-taggable-on", "~> 6.5"
+gem "acts_as_commentable_with_threading", "~> 2.0", ">= 2.0.1"
 gem "acts_as_votable", "~> 0.12.1"
 gem "bootsnap", "~> 1.4", ">= 1.4.6"
 gem "devise", "~> 4.7", ">= 4.7.1"

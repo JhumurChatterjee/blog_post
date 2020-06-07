@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   acts_as_votable
   acts_as_taggable_on :tags
+  acts_as_commentable
 
   belongs_to :user
 
