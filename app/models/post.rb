@@ -14,4 +14,5 @@ class Post < ApplicationRecord
   scope :order_by_date, -> { order(created_at: :desc) }
   scope :archived,      -> { where(archive: true) }
   scope :non_archived,  -> { where(archive: false) }
+  scope :find_posts,    ->(query) { joins(:tags).where("lower(title) LIKE :query OR lower(body) LIKE :query OR tags.name LIKE :query", query: "%#{query.downcase}%") }
 end
