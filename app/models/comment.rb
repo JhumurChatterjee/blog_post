@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   acts_as_nested_set scope: %i[commentable_id commentable_type]
 
   belongs_to :commentable, polymorphic: true
