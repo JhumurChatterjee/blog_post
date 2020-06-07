@@ -3,9 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
     user = User.find_by(email: params[:email])
 
     if user
-      render status: :unprocessable_entity, json: { message: "Email is already taken." }
+      render status: :unprocessable_entity, json: { message: t("invalid_email") }
     else
-      render status: :ok, json: { message: "Email is valid." }
+      render status: :ok, json: { message: t("valid_email") }
     end
   end
 end

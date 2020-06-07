@@ -37,3 +37,5 @@ en:
   danger_alert_prefix: "Oh snap!"
   notice_message_type: "info"
   alert_message_type: "danger"
+  valid_email: "Email is valid."
+  invalid_email: "Email is already taken."
