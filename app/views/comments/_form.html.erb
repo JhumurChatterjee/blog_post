@@ -1,0 +1,14 @@
+<%= form_for([post, comment], remote: true) do |f| %>
+<div>
+  <%= render "shared/error", resource: f.object %>
+</div>
+    <div>
+      <%= f.text_field :content, class: 'form-control commentbox', autofocus: true, :id => 'commentbox' %>
+    </div>
+
+    <div style="padding-top:20px;">
+      <%= button_to ( f.object.new_record? ? "Create Comment" : "Update Comment"), post_comments_path(post_id: @post.id), remote: true,
+       class: 'btn btn-primary'  %>
+
+    </div>
+<% end %>

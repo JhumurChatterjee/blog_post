@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts do
     put :like, on: :member
+    resources :comments, except: [:index, :show], on: :collection
   end
 
   devise_for :users, controllers: { registrations: "registrations" }

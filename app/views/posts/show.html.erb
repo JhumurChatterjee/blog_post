@@ -36,6 +36,20 @@
         <span class="text-muted">Posted <%= time_ago_in_words(@post.created_at) %> ago</span>
       </div>
     </div>
+
+    <div class="feed-activity-list row mt-4">
+      <div class="col-sm-12">
+        <% if @post.user == current_user %>
+          <div id="commentform" class="commentform">
+            <%= render 'comments/form', comment: @post.comments.build, post: @post %>
+          </div>
+        <% end %>
+
+        <div id="commentdiv" class="commentdiv">
+          <%= render 'comments/comment', comments: @post.comments.non_archived %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-12 col-md-3">

@@ -1,0 +1,4 @@
+$('#commentform').html("<%= escape_javascript( render 'comments/form', comment: @post.comments.build, post: @post) %>")
+$('.commentbox').val('.commentbox').val('');
+$('.commentbox').focus();
+$('#commentdiv').html("<%= j (render 'comments/comment', comments: @comments) %>");

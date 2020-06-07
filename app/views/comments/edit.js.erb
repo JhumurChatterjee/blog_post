@@ -1,0 +1,3 @@
+$('#commentform').html("<%= j (render 'comments/form', comment: @comment, post: @post) %>");
+$('.commentbox').focus();
+$('.commentbox').val('.commentbox').val("<%= @comment.content %>");

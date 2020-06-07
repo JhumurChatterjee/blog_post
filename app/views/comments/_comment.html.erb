@@ -1,0 +1,22 @@
+<% comments.each do |comment| %>
+  <div class="feed-element">
+
+    <div class="media-body" style="font-size:14px;">
+      <span class="pull-right text-navy"><%= time_ago_in_words(comment.updated_at) %> ago</span>
+
+      <br>
+      <div class="well" style="font-size:14px;">
+        <p class="font-weight-bold"><%= comment.content.html_safe %></p>
+        <% if current_user&.full_name == comment.user.full_name %>
+        <div class="actions">
+        <%= link_to "Edit", edit_post_comment_path(post_id: @post.id, id: comment.id), remote: true, class: 'btn btn-xs btn-primary'  %>
+
+        <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete, remote: true,  data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-outline btn-inverse'  %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>
