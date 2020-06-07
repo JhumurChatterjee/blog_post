@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if params[:tag].present?
       posts = current_user.posts.tagged_with(params[:tag])
     else
-      posts = current_user.posts.non_archived
+      posts = current_user.posts
     end
 
     @pagy, @posts = pagy_countless(posts.includes(:tags).order_by_date, link_extra: 'data-remote="true"')

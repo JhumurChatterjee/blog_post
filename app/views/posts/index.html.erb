@@ -14,8 +14,8 @@
     <div class="card">
       <div class="card-body">
         <% ActsAsTaggableOn::Tag.most_used(20).each_with_index do |tag, index| %>
-          <%= link_to posts_path(tag: tag.name) do %>
-            <span class="badge badge-<%= @classes[index % 7] %>"><%= tag.name %></span>
+          <%= link_to root_path(tag: tag.name), class: "badge badge-#{@classes[index % 7]}" do %>
+            <%= tag.name %>
           <% end %>
         <% end %>
       </div>
