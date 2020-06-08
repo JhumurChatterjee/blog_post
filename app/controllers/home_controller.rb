@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
     if params[:tag].present?
-      posts = Post.tagged_with(params[:tag])
+      posts = Post.non_archived.tagged_with(params[:tag])
     elsif params[:search].present?
-      posts = Post.find_posts(params[:search])
+      posts = Post.non_archived.find_posts(params[:search])
     else
       posts = Post.non_archived
     end
