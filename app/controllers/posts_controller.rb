@@ -51,12 +51,13 @@ class PostsController < ApplicationController
   end
 
   def like
-    @voted_for = current_user.voted_for?(post)
+    @post = Post.find(params[:id])
+    @voted_for = current_user.voted_for?(@post)
 
     if @voted_for
-      post.unliked_by(current_user)
+      @post.unliked_by(current_user)
     else
-      post.liked_by(current_user)
+      @post.liked_by(current_user)
     end
 
     render layout: false

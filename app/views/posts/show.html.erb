@@ -52,7 +52,7 @@
     <h4>You may like:</h4>
 
     <% @post.find_related_tags.first(10).each do |post| %>
-      <%= link_to truncate(post.title, length: 30), post_path(post) %>
+      <%= link_to truncate(post.title, length: 30), post_path(post) %><br>
     <% end %>
   </div>
 </div>
