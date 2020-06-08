@@ -2,12 +2,43 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style>
       /* Email styles need to be inline */
+      @import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+      body {
+        max-width: 800px;
+      }
+
+      header {
+        margin-bottom: 50px;
+      }
+
+      main {
+        background-color: #F8F9Fa;
+        padding: 60px !important;
+      }
+
+      .navbar-brand {
+        font-family: Spicy Rice, cursive;
+      }
     </style>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="container-fluid">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <%= link_to "Blog Post", "http://localhost:3000", class: "navbar-brand" %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
